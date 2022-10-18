@@ -5,7 +5,7 @@ This is a final project for ADS505: https://github.com/VSbr22/ADS505B-Fall22-Gro
 #### -- Project Status: [Completed]
 
 ## Project Intro
-The purpose of this project is to present the process used to find and predict profitable products sold from a Global Superstore. Various models were used for regression and classification to determine if products could be predicted to be profitable or not. These models include KNN,SVR, Logistic Regression, . The Global Superstore data is collected from 01/01/2011 through 12/31/2014 providing years of repetitive buying and purchasing behavbiors. In order to better serve company stakeholders the project was established to determine how to increase profit by being able to provide recommendations based on model performance. 
+The purpose of this project is to present the process used to find and predict profitable products sold from a Global Superstore. Various models were used for regression and classification to determine if products could be predicted to be profitable or not. These models include KNN,SVR, Logistic Regression, XGboost . The Global Superstore data is collected from 01/01/2011 through 12/31/2014 providing years of repetitive buying and purchasing behaviors. In order to better serve company stakeholders, the project was established to determine how to increase profit by being able to provide recommendations based on model performance.
 
 ### Team 3
 * George Garcia
@@ -76,11 +76,17 @@ The purpose of this project is to present the process used to find and predict p
 * from sklearn.model_selection import train_test_split, GridSearchCV, KFold, cross_val_score
 * from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor, export_graphviz, plot_tree
 * from sklearn import preprocessing
-* from sklearn.metrics import confusion_matrix
+* from sklearn.metrics import auc, accuracy_score, confusion_matrix, mean_squared_error
 * from sklearn.neighbors import KNeighborsClassifier
 * from sklearn.metrics import f1_score, precision_score, recall_score, accuracy_score, confusion_matrix,r2_score
 * from sklearn.preprocessing import OrdinalEncoder, StandardScaler, MinMaxScaler
 * from sklearn import metrics
+* from sklearn.model_selection import cross_val_score
+* from sklearn.compose import make_column_transformer
+* from sklearn.preprocessing import OneHotEncoder
+* import xgboost as xgb
+* from xgboost import plot_importance
+* from scipy.stats import uniform, randint
 
 * from wsgiref.simple_server import WSGIRequestHandler
 
@@ -127,9 +133,10 @@ The purpose of this project is to present the process used to find and predict p
 ## Data Pre-Processing
 * Format was changed for features to remove extra white space and special characters.
 * Normalization was preformed on the numeric variables, to counter skewed variables. 
-* Profit was changed to binary 0 and 1
+* Profitability was added by changing profit to binary 0 and 1
 * Ordinal encoding was created for shipping variables. 
 * Categorical data was changed under dytpes to reflect as category type. 
+* OneHotEncoder was used to transfrom categorical data for the XGBoost
 
 
 
@@ -144,3 +151,6 @@ The purpose of this project is to present the process used to find and predict p
 * Logistic Regression
 * KNearestNeighbors
 * Support Vector Machine
+* XGBoost
+* KBeast
+* All models were evaluated using the accuracy 
