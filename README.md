@@ -44,18 +44,18 @@ The purpose of this project is to present the process used to find and predict p
 - presentation- Pitch deck
 - voice recordings
 
-## Required Python Packages
-# Basics
+# Required Python Packages
+*Basics
 import pandas as pd
 import numpy as np
 import seaborn as sns
 import scipy
 
-# Visualization
+*Visualization
 import matplotlib.pylab as plt
 %matplotlib inline
 
-# Modeling
+*Modeling
 import statsmodels.formula.api as sm
 import statsmodels.tools.tools as stattools
 from scipy.stats import skew
@@ -84,7 +84,7 @@ from sklearn import metrics
 
 from wsgiref.simple_server import WSGIRequestHandler
 
-# Set basic options for consistent output
+* Set basic options for consistent output
 PRECISION = 2
 np.set_printoptions(precision = PRECISION)
 pd.set_option('display.float_format', lambda x: '%.2f' % x)
@@ -92,7 +92,7 @@ pd.set_option('display.precision', PRECISION)
 pd.set_option('display.width', 1000)
 pd.set_option('display.colheader_justify', 'center')
 
-# Set Matplotlib defaults for consistent visualization look 'n' feel
+* Set Matplotlib defaults for consistent visualization look 'n' feel
 FONTSIZE_S = 10
 FONTSIZE_M = 12
 FONTSIZE_L = 14
