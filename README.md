@@ -46,73 +46,73 @@ The purpose of this project is to present the process used to find and predict p
 
 # Required Python Packages
 *Basics
-import pandas as pd
-import numpy as np
-import seaborn as sns
-import scipy
+*import pandas as pd
+*import numpy as np
+*import seaborn as sns
+*import scipy
 
 *Visualization
-import matplotlib.pylab as plt
-%matplotlib inline
+*import matplotlib.pylab as plt
+*%matplotlib inline
 
 *Modeling
-import statsmodels.formula.api as sm
-import statsmodels.tools.tools as stattools
-from scipy.stats import skew
+*import statsmodels.formula.api as sm
+*import statsmodels.tools.tools as stattools
+*from scipy.stats import skew
 
-from dmba import regressionSummary, exhaustive_search
-from dmba import backward_elimination, forward_selection, stepwise_selection
-from dmba import adjusted_r2_score, AIC_score, BIC_score
-from dmba import plotDecisionTree, gainsChart, liftChart
-from dmba import classificationSummary, regressionSummary
+*from dmba import regressionSummary, exhaustive_search
+*from dmba import backward_elimination, forward_selection, stepwise_selection
+*from dmba import adjusted_r2_score, AIC_score, BIC_score
+*from dmba import plotDecisionTree, gainsChart, liftChart
+*from dmba import classificationSummary, regressionSummary
 
-from sklearn.linear_model import LinearRegression, Lasso, Ridge, LassoCV, BayesianRidge, SGDRegressor
-from sklearn.linear_model import LogisticRegression, LogisticRegressionCV
-from sklearn.svm import SVR
-from sklearn.impute import SimpleImputer
-from sklearn import tree
-from sklearn.tree import plot_tree
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.model_selection import train_test_split, GridSearchCV, KFold, cross_val_score
-from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor, export_graphviz, plot_tree
-from sklearn import preprocessing
-from sklearn.metrics import confusion_matrix
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import f1_score, precision_score, recall_score, accuracy_score, confusion_matrix,r2_score
-from sklearn.preprocessing import OrdinalEncoder, StandardScaler, MinMaxScaler
-from sklearn import metrics
+*from sklearn.linear_model import LinearRegression, Lasso, Ridge, LassoCV, BayesianRidge, SGDRegressor
+*from sklearn.linear_model import LogisticRegression, LogisticRegressionCV
+*from sklearn.svm import SVR
+*from sklearn.impute import SimpleImputer
+*from sklearn import tree
+*from sklearn.tree import plot_tree
+*from sklearn.ensemble import RandomForestClassifier
+*from sklearn.model_selection import train_test_split, GridSearchCV, KFold, cross_val_score
+*from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor, export_graphviz, plot_tree
+*from sklearn import preprocessing
+*from sklearn.metrics import confusion_matrix
+*from sklearn.neighbors import KNeighborsClassifier
+*from sklearn.metrics import f1_score, precision_score, recall_score, accuracy_score, confusion_matrix,r2_score
+*from sklearn.preprocessing import OrdinalEncoder, StandardScaler, MinMaxScaler
+*from sklearn import metrics
 
-from wsgiref.simple_server import WSGIRequestHandler
+*from wsgiref.simple_server import WSGIRequestHandler
 
 * Set basic options for consistent output
-PRECISION = 2
-np.set_printoptions(precision = PRECISION)
-pd.set_option('display.float_format', lambda x: '%.2f' % x)
-pd.set_option('display.precision', PRECISION)
-pd.set_option('display.width', 1000)
-pd.set_option('display.colheader_justify', 'center')
+*PRECISION = 2
+*np.set_printoptions(precision = PRECISION)
+*pd.set_option('display.float_format', lambda x: '%.2f' % x)
+*pd.set_option('display.precision', PRECISION)
+*pd.set_option('display.width', 1000)
+*pd.set_option('display.colheader_justify', 'center')
 
 * Set Matplotlib defaults for consistent visualization look 'n' feel
-FONTSIZE_S = 10
-FONTSIZE_M = 12
-FONTSIZE_L = 14
-plt.style.use('default')
-plt.rcParams['figure.titlesize'] = FONTSIZE_L
-plt.rcParams['figure.figsize'] = (9, 9 / (16 / 9))
-plt.rcParams['figure.subplot.left'] = '0.1'
-plt.rcParams['figure.subplot.bottom'] = '0.1'
-plt.rcParams['figure.subplot.top'] = '0.9'
-plt.rcParams['figure.subplot.wspace'] = '0.4'
-plt.rcParams['lines.linewidth'] = '2'
-plt.rcParams['axes.linewidth'] = '2'
-plt.rcParams['axes.titlesize'] = '8'
-#plt.rcParams['axes.titleweight'] = 'bold'
-plt.rcParams['axes.labelsize'] = FONTSIZE_M
-plt.rcParams['xtick.labelsize'] = FONTSIZE_S
-plt.rcParams['ytick.labelsize'] = FONTSIZE_S
-plt.rcParams['grid.linewidth'] = '1'
-plt.rcParams['legend.fontsize'] = FONTSIZE_S
-plt.rcParams['legend.title_fontsize'] = FONTSIZE_S
+*FONTSIZE_S = 10
+*FONTSIZE_M = 12
+*FONTSIZE_L = 14
+*plt.style.use('default')
+*plt.rcParams['figure.titlesize'] = FONTSIZE_L
+*plt.rcParams['figure.figsize'] = (9, 9 / (16 / 9))
+*plt.rcParams['figure.subplot.left'] = '0.1'
+*plt.rcParams['figure.subplot.bottom'] = '0.1'
+*plt.rcParams['figure.subplot.top'] = '0.9'
+*plt.rcParams['figure.subplot.wspace'] = '0.4'
+*plt.rcParams['lines.linewidth'] = '2'
+*plt.rcParams['axes.linewidth'] = '2'
+*plt.rcParams['axes.titlesize'] = '8'
+*#plt.rcParams['axes.titleweight'] = 'bold'
+*plt.rcParams['axes.labelsize'] = FONTSIZE_M
+*plt.rcParams['xtick.labelsize'] = FONTSIZE_S
+*plt.rcParams['ytick.labelsize'] = FONTSIZE_S
+*plt.rcParams['grid.linewidth'] = '1'
+*plt.rcParams['legend.fontsize'] = FONTSIZE_S
+*plt.rcParams['legend.title_fontsize'] = FONTSIZE_S
 
 ## Getting Started
 
